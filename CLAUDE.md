@@ -1,3 +1,3 @@
-Zie [AGENTS.md](AGENTS.md) — dit project volgt AGENTS.md als enige bron van
-waarheid voor agent-instructies, agent-agnostic. Geen losse Claude-specifieke
-instructies hier; alleen deze pointer.
+See [AGENTS.md](AGENTS.md) — this project follows AGENTS.md as the single
+source of truth for agent instructions, agent-agnostic. No separate
+Claude-specific instructions here; this pointer only.
