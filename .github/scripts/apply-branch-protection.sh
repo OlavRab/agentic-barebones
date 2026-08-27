@@ -16,7 +16,7 @@ gh api \
   --method PUT \
   -H "Accept: application/vnd.github+json" \
   "repos/${REPO}/branches/${BRANCH}/protection" \
-  -f "required_status_checks[strict]=true" \
+  -F "required_status_checks[strict]=true" \
   -f "required_status_checks[checks][][context]=PR linked to an OpenSpec change" \
   -f "required_status_checks[checks][][context]=Secret scan" \
   -f "required_status_checks[checks][][context]=Lint & test" \
