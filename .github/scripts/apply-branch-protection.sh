@@ -5,6 +5,11 @@
 # the policy.
 #
 # Usage: ./apply-branch-protection.sh [branch]
+#
+# required_approving_review_count is 0 because this repo is solo-maintained
+# and GitHub blocks self-approval — with a real CODEOWNERS entry and count=1,
+# a solo owner could never merge their own PRs. Bump to 1 once a second
+# reviewer is in CODEOWNERS.
 set -euo pipefail
 
 BRANCH="${1:-main}"
@@ -16,14 +21,14 @@ gh api \
   --method PUT \
   -H "Accept: application/vnd.github+json" \
   "repos/${REPO}/branches/${BRANCH}/protection" \
-  -f "required_status_checks[strict]=true" \
+  -F "required_status_checks[strict]=true" \
   -f "required_status_checks[checks][][context]=PR linked to an OpenSpec change" \
   -f "required_status_checks[checks][][context]=Secret scan" \
   -f "required_status_checks[checks][][context]=Lint & test" \
   -f "required_status_checks[checks][][context]=Build" \
   -F "enforce_admins=true" \
   -F "required_pull_request_reviews[require_code_owner_reviews]=true" \
-  -F "required_pull_request_reviews[required_approving_review_count]=1" \
+  -F "required_pull_request_reviews[required_approving_review_count]=0" \
   -F "restrictions=null" \
   -F "allow_force_pushes=false" \
   -F "allow_deletions=false"

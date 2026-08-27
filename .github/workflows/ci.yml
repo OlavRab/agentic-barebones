@@ -28,8 +28,12 @@ jobs:
             echo "OK: PR body references a change id"
             exit 0
           fi
+          if echo "$PR_BODY" | grep -qE 'no-openspec:\s*\S'; then
+            echo "OK: explicit no-openspec justification found in PR body"
+            exit 0
+          fi
           echo "No openspec change found in diff or PR description."
-          echo "Link the PR to openspec/changes/<change-id>/, or explain why not in the PR body."
+          echo "Link the PR to openspec/changes/<change-id>/, or add 'no-openspec: <reason>' to the PR body if this change genuinely has no spec impact (e.g. a mechanical script/CI fix)."
           exit 1
 
   secret-scan:

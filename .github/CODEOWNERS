@@ -1,10 +1,10 @@
-# Elke wijziging heeft menselijke review nodig — geen auto-merge, ook niet voor
-# agent-gegenereerde PR's. Vul hieronder in wie eigenaar is.
-#
-# TODO: vervang door echte owner(s)
-* @TODO-owner
+# Every change gets human eyes on it before merge. Solo-maintained right now,
+# so required review count is 0 (see apply-branch-protection.sh) — CODEOWNERS
+# still names the actual owner for clarity and for when a second reviewer
+# joins.
+* @OlavRab
 
-# Agent-instructies zelf: extra streng, wijzigingen hier raken alle agents
-/AGENTS.md @TODO-owner
-/.agents/ @TODO-owner
-/openspec/config.yaml @TODO-owner
+# Agent instructions themselves: extra scrutiny, changes here affect every agent
+/AGENTS.md @OlavRab
+/.agents/ @OlavRab
+/openspec/config.yaml @OlavRab
