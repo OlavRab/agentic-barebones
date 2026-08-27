@@ -36,6 +36,21 @@ Ref: openspec/changes/add-token-refresh/
 Zie [`.github/CODEOWNERS`](.github/CODEOWNERS) — elke PR heeft menselijke
 review nodig, ook agent-gegenereerde. Geen auto-merge.
 
+## Branch protection
+
+`main` is beschermd: geen direct push, CODEOWNERS-review verplicht, CI-checks
+(`openspec-link`, `secret-scan`, `lint-and-test`, `build`) moeten slagen, geen
+force-push/delete. Dit is een GitHub-repo-setting, niet af te dwingen vanuit
+een bestand in de repo — vastgelegd als script zodat het reproduceerbaar is:
+
+```
+gh auth login   # eenmalig, admin-rechten op de repo nodig
+./.github/scripts/apply-branch-protection.sh main
+```
+
+Opnieuw draaien na wijzigingen aan CI-jobnamen (die moeten matchen met de
+`required_status_checks` in het script).
+
 ## Voor agents
 
 Zie [`AGENTS.md`](AGENTS.md) voor de volledige workflow-instructies en
