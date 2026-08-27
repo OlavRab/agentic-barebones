@@ -2,7 +2,9 @@
 
 Link naar de bijbehorende change: `openspec/changes/<change-id>/`
 
-<!-- Elke non-triviale PR hoort bij een proposal. Geen change-id? Leg hieronder uit waarom. -->
+<!-- Elke non-triviale PR hoort bij een proposal. Puur mechanische fix zonder
+     spec-impact (bv. CI/script-typo)? Zet dan i.p.v. een change-id:
+     no-openspec: <korte reden> -->
 
 ## Wat & waarom
 

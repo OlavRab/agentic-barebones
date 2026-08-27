@@ -16,7 +16,10 @@ van dezelfde afspraken.
    afvinken.
 4. **Verify** — tests + lint lokaal groen voordat een PR open gaat.
 5. **PR** — gebruik de PR-template, link naar `openspec/changes/<change-id>/`.
-   CI checkt dit automatisch (`openspec-link` job).
+   CI checkt dit automatisch (`openspec-link` job). Puur mechanische wijziging
+   zonder spec-impact (bv. een CI/script-fix)? Zet dan `no-openspec: <reden>`
+   in de PR-body i.p.v. een change-id — expliciete, beargumenteerde
+   uitzondering, geen stille bypass.
 6. **Archive** — na merge: change verplaatst naar `openspec/specs/` als nieuwe
    source of truth.
 
