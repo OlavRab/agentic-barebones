@@ -1,3 +1,3 @@
-Zie [AGENTS.md](../AGENTS.md) — dit project volgt AGENTS.md als enige bron van
-waarheid voor agent-instructies, agent-agnostic. Geen losse Copilot-specifieke
-instructies hier; alleen deze pointer.
+See [AGENTS.md](../AGENTS.md) — this project follows AGENTS.md as the single
+source of truth for agent instructions, agent-agnostic. No separate
+Copilot-specific instructions here; this pointer only.
