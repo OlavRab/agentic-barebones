@@ -1,0 +1,9 @@
+.env
+
+# Persoonlijke, niet-gedeelde overrides (agent-agnostic conventie, vgl. CLAUDE.local.md).
+# Elke *.local.* is van jou alleen, nooit committen.
+*.local.md
+*.local.json
+*.local.yaml
+*.local.yml
+AGENTS.local.md

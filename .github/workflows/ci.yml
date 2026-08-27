@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  openspec-link:
+    name: PR linked to an OpenSpec change
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check PR touches or references openspec/changes/
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -e
+          if git diff --name-only "$BASE_SHA" HEAD | grep -q '^openspec/changes/'; then
+            echo "OK: diff touches openspec/changes/"
+            exit 0
+          fi
+          if echo "$PR_BODY" | grep -qE 'openspec/changes/[A-Za-z0-9._-]+'; then
+            echo "OK: PR body references a change id"
+            exit 0
+          fi
+          echo "No openspec change found in diff or PR description."
+          echo "Link the PR to openspec/changes/<change-id>/, or explain why not in the PR body."
+          exit 1
+
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  lint-and-test:
+    name: Lint & test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # TODO: taal/toolchain toevoegen zodra gekozen, bv.:
+      #   - uses: actions/setup-node@v4  /  setup-python@v5  /  setup-go@v5
+      #   - run: <install deps>
+      - name: Lint
+        run: make lint
+      - name: Test
+        run: make test

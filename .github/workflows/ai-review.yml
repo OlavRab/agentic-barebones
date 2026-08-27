@@ -1,0 +1,26 @@
+name: AI PR review
+
+# TODO: activeer zodra een AI-reviewer gekozen is (bv. Claude Code GitHub Action,
+# CodeRabbit, GitHub Copilot PR review). Tot dan: placeholder, geen vendor-keuze
+# vastgelegd.
+#
+# Belangrijk (zie .agents/rules/stopgates.md): AI-review is altijd adviserend,
+# nooit een vervanging voor menselijke goedkeuring. Nooit auto-approve/auto-merge
+# aan deze workflow koppelen — CODEOWNERS blijft de harde eis.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  ai-review:
+    name: AI review (placeholder)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Placeholder
+        run: |
+          echo "TODO: vervang door echte AI-reviewer stap."
+          echo "Voorbeelden: anthropics/claude-code-action, coderabbitai/ai-pr-reviewer,"
+          echo "GitHub Copilot PR review (repo-instelling, geen Actions-stap nodig)."
+          echo "Vereist typisch een secret (bv. ANTHROPIC_API_KEY) in repo-settings."

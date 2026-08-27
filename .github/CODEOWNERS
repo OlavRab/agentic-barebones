@@ -1,0 +1,10 @@
+# Elke wijziging heeft menselijke review nodig — geen auto-merge, ook niet voor
+# agent-gegenereerde PR's. Vul hieronder in wie eigenaar is.
+#
+# TODO: vervang door echte owner(s)
+* @TODO-owner
+
+# Agent-instructies zelf: extra streng, wijzigingen hier raken alle agents
+/AGENTS.md @TODO-owner
+/.agents/ @TODO-owner
+/openspec/config.yaml @TODO-owner

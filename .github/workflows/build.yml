@@ -1,0 +1,18 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # TODO: taal/toolchain toevoegen zodra gekozen, bv.:
+      #   - uses: actions/setup-node@v4  /  setup-python@v5  /  setup-go@v5
+      #   - run: <install deps>
+      - name: Build
+        run: make build
